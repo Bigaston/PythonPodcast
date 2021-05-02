@@ -10,5 +10,14 @@ podcast = {
   "itunes_subcategory": "",
   "itunes_subtitle": "Dans la vie il y a des questions que personnes ne se pose...",
   "itunes_type": "episodic",
-  "itunes_explicit": "no"
+  "itunes_explicit": "no",
+  "base_description": """
+Dans la vie il y a des questions que personnes ne se pose...
+
+%%comment%%
+
+📍 Enregistré à... chez moi du coup!
+📅 Le 17 décembre 2019
+📻 Voix de l'introduction par Fredoune
+  """
 }

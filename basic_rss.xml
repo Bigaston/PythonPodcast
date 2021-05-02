@@ -1,3 +1,4 @@
+%import marko
 <rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:google="http://www.google.com/schemas/play-podcasts/1.0" xmlns:podext="https://podcast-ext.org" xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md" version="2.0">
   <channel>
     <title>
@@ -23,7 +24,7 @@
     </language>
     <itunes:author>{{config.podcast["author"]}}</itunes:author>
     <itunes:owner>
-    <itunes:email>{{config.podcast["email"]}}</itunes:email>
+      <itunes:email>{{config.podcast["email"]}}</itunes:email>
     </itunes:owner>
     <itunes:category text="{{config.podcast["itunes_category"]}}">
       <itunes:category text="{{config.podcast["itunes_subcategory"]}}"/>
@@ -34,5 +35,21 @@
     <itunes:image href="{{config.podcast["url"]}}/static/pod.jpg"> </itunes:image>
     <itunes:explicit>{{config.podcast["itunes_explicit"]}}</itunes:explicit>
     <link rel="payment" href="{{config.podcast["donation"]}}"> </link>
+  
+    %for ep in episodes:
+    <item>
+      <title>{{episodes[ep]["data"]["tracktitle"]}}</title>
+      <description>{{marko.convert(config.podcast["base_description"].replace("%%comment%%", str(episodes[ep]["data"]["comment"])))}}</description>
+      <link>{{config.podcast["url"]}}/ep/{{ep}}</link>
+      <guid isPermalink="false">{{ep}}</guid>
+      <dc:creator>
+        <![CDATA[ {{config.podcast["author"]}} ]]>
+      </dc:creator>
+      <pubDate>{{episodes[ep]["modifDate"]}}</pubDate>
+      <itunes:author>{{config.podcast["author"]}}</itunes:author>
+      <itunes:summary>{{config.podcast["base_description"].replace("%%comment%%", str(episodes[ep]["data"]["comment"]))}}</itunes:summary>
+      <itunes:image href="{{config.podcast["url"]}}/img/{ep}" />
+    </item>
+    %end
   </channel>
 </rss>

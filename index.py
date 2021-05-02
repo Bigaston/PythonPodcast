@@ -25,13 +25,8 @@ def get_episode_image(slug):
   if audioInfo == None:
     abort(404, "No episode called " + slug)
 
-  print(audioInfo["data"]["artwork"])
-
-  # TODO : Trouver un fix propre
-  response.set_header("content-type", 'image/jpeg')
-  return audioInfo["data"]["artwork"].first.data
-
-  
+  response.set_header("content-type", audioInfo["data"]["img"]["mime"])
+  return audioInfo["data"]["img"]["data"]  
 
 @get("/static/<file:path>")
 def send_static(file):

@@ -6,6 +6,7 @@ podcast = {
   "lang": "fr",
   "email": "podcast@bigaston.me",
   "donation": "https://utip.io/bigaston",
+  "audio_base": "",
   "itunes_category": "Comedy",
   "itunes_subcategory": "",
   "itunes_subtitle": "Dans la vie il y a des questions que personnes ne se pose...",

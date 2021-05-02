@@ -1,0 +1,3 @@
+- [ ] Gérer les types d'épisodes
+- [ ] Gérer les épisodes explicites
+- [ ] Gérer les saisons

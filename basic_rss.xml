@@ -1,0 +1,38 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:google="http://www.google.com/schemas/play-podcasts/1.0" xmlns:podext="https://podcast-ext.org" xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md" version="2.0">
+  <channel>
+    <title>
+    <![CDATA[ {{config.podcast["title"]}} ]]>
+    </title>
+    <description>
+    <![CDATA[ {{config.podcast["description"]}} ]]>
+    </description>
+    <link>{{config.podcast["url"]}}</link>
+    <image>
+      <url>{{config.podcast["url"]}}/static/pod.jpg</url>
+      <title>{{config.podcast["title"]}}</title>
+      <link>{{config.podcast["url"]}}</link>
+    </image>
+    <generator>Quetsche</generator>
+    <lastBuildDate>{{build_date}}</lastBuildDate>
+    <atom:link href="{{config.podcast["url"]}}/rss" rel="self" type="application/rss+xml"/>
+    <copyright>
+      <![CDATA[ {{config.podcast["author"]}} ]]>
+    </copyright>
+    <language>
+      <![CDATA[ {{config.podcast["lang"]}} ]]>
+    </language>
+    <itunes:author>{{config.podcast["author"]}}</itunes:author>
+    <itunes:owner>
+    <itunes:email>{{config.podcast["email"]}}</itunes:email>
+    </itunes:owner>
+    <itunes:category text="{{config.podcast["itunes_category"]}}">
+      <itunes:category text="{{config.podcast["itunes_subcategory"]}}"/>
+    </itunes:category>
+    <itunes:summary>{{config.podcast["description"]}}</itunes:summary>
+    <itunes:subtitle>{{config.podcast["itunes_subtitle"]}}</itunes:subtitle>
+    <itunes:type>{{config.podcast["itunes_type"]}}</itunes:type>
+    <itunes:image href="{{config.podcast["url"]}}/static/pod.jpg"> </itunes:image>
+    <itunes:explicit>{{config.podcast["itunes_explicit"]}}</itunes:explicit>
+    <link rel="payment" href="{{config.podcast["donation"]}}"> </link>
+  </channel>
+</rss>

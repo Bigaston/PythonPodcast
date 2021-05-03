@@ -38,20 +38,20 @@
   
     %for ep in episodes:
     <item>
-      <title>{{episodes[ep]["data"]["title"]}}</title>
-      <description>{{marko.convert(config.podcast["base_description"].replace("%%comment%%", str(episodes[ep]["data"]["description"])))}}</description>
-      <link>{{config.podcast["url"]}}/ep/{{ep}}</link>
-      <guid isPermalink="false">{{ep}}</guid>
+      <title>{{ep["data"]["title"]}}</title>
+      <description>{{marko.convert(config.podcast["base_description"].replace("%%comment%%", str(ep["data"]["description"])))}}</description>
+      <link>{{config.podcast["url"]}}/ep/{{ep["slug"]}}</link>
+      <guid isPermalink="false">{{ep["slug"]}}</guid>
       <dc:creator>
         <![CDATA[ {{config.podcast["author"]}} ]]>
       </dc:creator>
-      <pubDate>{{episodes[ep]["modifDate"]}}</pubDate>
+      <pubDate>{{ep["modifDate"].strftime("%a, %d %b %Y %H:%M:%S +0200")}}</pubDate>
       <itunes:author>{{config.podcast["author"]}}</itunes:author>
-      <itunes:summary>{{config.podcast["base_description"].replace("%%comment%%", str(episodes[ep]["data"]["description"]))}}</itunes:summary>
-      <itunes:image href="{{config.podcast["url"]}}/img/{ep}" />
+      <itunes:summary>{{config.podcast["base_description"].replace("%%comment%%", str(ep["data"]["description"]))}}</itunes:summary>
+      <itunes:image href="{{config.podcast["url"]}}/img/{{ep["slug"]}}" />
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
-      <enclosure url="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{ep}}.mp3" type="audio/mpeg" length="{{episodes[ep]["fileSize"]}}"/>
+      <enclosure url="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{ep["slug"]}}.mp3" type="audio/mpeg" length="{{ep["fileSize"]}}"/>
     </item>
     %end
   </channel>

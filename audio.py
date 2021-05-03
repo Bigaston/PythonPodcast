@@ -2,16 +2,21 @@ import mutagen
 import os
 import datetime
 import math
+from functools import cmp_to_key
+
+config = __import__("config")
 
 def get_all_audio():
   audio_files = list(filter(filter_mp3, os.listdir("./public/audio")))
 
-  fileDict = {}
+  files = list()
 
   for f in audio_files:
-    fileDict[f.replace(".mp3", "")] = get_one_audio(f)
+    files.append(get_one_audio(f))
 
-  return fileDict
+  files.sort(key=cmp_to_key(filterByDate))
+
+  return files
 
 def get_one_audio(slug):
   audio_files = list(filter(filter_mp3, os.listdir("./public/audio")))
@@ -39,8 +44,9 @@ def get_one_audio(slug):
 
     return {
       "data": dataDict,
-      "modifDate": datetime.datetime.fromtimestamp(os.stat("./public/audio/" + slug).st_mtime).strftime("%a, %d %b %Y %H:%M:%S +0200"),
-      "fileSize": os.stat("./public/audio/" + slug).st_size
+      "modifDate": datetime.datetime.fromtimestamp(os.stat("./public/audio/" + slug).st_mtime),
+      "fileSize": os.stat("./public/audio/" + slug).st_size,
+      "slug": slug.replace(".mp3", "")
     }
   else:
     return None
@@ -78,3 +84,18 @@ def sToHms(seconds):
     seconde = str(seconde)
 
   return heure + ":" + minute + ":" + seconde
+
+def filterByDate(elem1, elem2):
+  modificator = 0
+
+  if config.podcast["itunes_type"] == "episodic":
+    modificator = 1
+  else:
+    modificator = 0
+
+  if elem1["modifDate"] > elem2["modifDate"]:
+    return 1 * modificator
+  elif elem1["modifDate"] < elem2["modifDate"]:
+    return -1 * modificator
+  else:
+    return 0

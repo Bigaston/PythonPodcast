@@ -33,7 +33,17 @@
 
     <!-- Liste des épisodes-->
     %for ep in episodes:
+      <div class="episode">
+        <img src="/img/{{ep["slug"]}}" alt="Couverture de {{ep["data"]["title"]}}" />
+        <div class="rightDivEp">
+          <div class="divTitle">
+            <h2><a href="/ep/{{ep["slug"]}}">{{ep["data"]["title"]}}</a></h2>
+          </div>
 
+          <p class="desc">{{ep["data"]["description"]}}</p>
+          <p class="moreInfoEp">{{ep["data"]["duration"]}} | {{ep["modifDate"].strftime("%d/%m/%Y")}}</p>
+        </div>
+      </div>
     %end
   </body>
 </html>

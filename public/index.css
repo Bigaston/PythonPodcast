@@ -185,3 +185,109 @@ body {
 .icon:hover {
 	cursor: pointer;
 }
+
+/* Episodes */
+.episode {
+	display: flex;
+	flex-direction: row;
+	background-color: #F4F6F7;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 5px;
+	filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+}
+
+.theme-black .episode {
+	background-color: #34495E;
+}
+
+@media screen and (max-width: 490px) {
+	.episode {
+		width: auto;
+	}
+}
+
+.episode > img {
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: 490px) {
+	.episode > img {
+		width: 50px;
+		height: 50px;
+		border-radius: 5px;
+	}
+}
+
+.rightDivEp {
+	margin-left: 10px;
+}
+
+.divTitle {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.divTitle > h2 {
+	margin: 0px;
+}
+
+.theme-black .divTitle > h2 > a {
+	color: white;
+}
+
+@media screen and (max-width: 490px) {
+	.divTitle > h2 {
+		margin: 0px;
+		font-size: 20px;
+	}
+}
+
+.divTitle > img{
+	display: inline;
+	width: 20px;
+	margin-right: 5px;
+}
+
+.divTitle > img:hover {
+	cursor: pointer;
+}
+
+.divTitle > h2 > a { 
+	color: black;
+	text-decoration: none;
+}
+
+.divTitle > h2 > a:hover {
+	text-decoration: underline;
+}
+
+.rightDivEp > .desc {
+	text-align: justify;
+	margin-top: 0px;
+}
+
+.theme-black .rightDivEp > .desc {
+	color: white;
+}
+
+@media screen and (max-width: 490px) {
+	.rightDivEp > .desc {
+		display: none;
+	}
+}
+
+.rightDivEp > .moreInfoEp {
+	margin: 0px;
+	font-size: 15px;
+	color: #616A6B;
+	position: relative;
+	bottom: 0;
+}

@@ -1,6 +1,7 @@
 from bottle import get, template, response, static_file, abort, run, Bottle
 import datetime
 import mimetypes
+import sys
 
 app = application = Bottle()
 
@@ -72,4 +73,7 @@ class StripPathMiddleware(object):
         return self.a(e, h)
 
 if __name__ == "__main__":
-  run(app=StripPathMiddleware(app), host='localhost', port=8080, debug=True, reloader=True)
+  if (sys.argv[1] == "--deploy"):
+    run(app=StripPathMiddleware(app), server='paste', port=7890)
+  else:
+    run(app=StripPathMiddleware(app), host='localhost', port=8080, debug=True, reloader=True)

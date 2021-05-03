@@ -2,6 +2,7 @@ import mutagen
 import os
 import datetime
 import math
+import json
 from functools import cmp_to_key
 
 config = __import__("config")
@@ -41,6 +42,13 @@ def get_one_audio(slug):
       }
     else:
       dataDict["img"] = None
+
+    if os.path.isfile("./public/audio/" + slug.replace(".mp3", "") + ".json"):
+      rawData = open("./public/audio/" + slug.replace(".mp3", "") + ".json", "r", encoding="utf8")
+      otherData = json.load(rawData)
+
+      for key in otherData:
+        dataDict[key] = otherData[key]
 
     return {
       "data": dataDict,

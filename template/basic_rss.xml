@@ -50,7 +50,18 @@
       <itunes:summary>{{config.podcast["base_description"].replace("%%comment%%", str(ep["data"]["description"]))}}</itunes:summary>
       <itunes:image href="{{config.podcast["url"]}}/img/{{ep["slug"]}}" />
       <itunes:episodeType>full</itunes:episodeType>
-      <itunes:explicit>no</itunes:explicit>
+      %if ep["data"].get("itunes_explicit") != None:
+        <itunes:explicit>{{ep["data"].get("itunes_explicit")}}</itunes:explicit>
+      %end
+      %if ep["data"].get("itunes_season") != None:
+        <itunes:season>{{ep["data"].get("itunes_season")}}</itunes:season>
+      %end
+      %if ep["data"].get("itunes_episode") != None:
+        <itunes:episode>{{ep["data"].get("itunes_episode")}}</itunes:episode>
+      %end
+      %if ep["data"].get("itunes_episode_type") != None:
+        <itunes:episodeType>{{ep["data"].get("itunes_episode_type")}}</itunes:episodeType>
+      %end
       <enclosure url="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{ep["slug"]}}.mp3" type="audio/mpeg" length="{{ep["fileSize"]}}"/>
     </item>
     %end

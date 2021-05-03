@@ -1,11 +1,13 @@
-from bottle import get, template, response, static_file, abort
+from bottle import get, template, response, static_file, abort, run, Bottle
 import datetime
 import mimetypes
+
+app = application = Bottle()
 
 config = __import__("config")
 audio = __import__("audio")
 
-@get('/rss')
+@app.get('/rss')
 def send_rss():
   base_rss = open("./template/basic_rss.xml", "r", encoding="utf8").read()
 
@@ -18,7 +20,7 @@ def send_rss():
     "episodes": audioFiles
   })
 
-@get("/img/<slug>")
+@app.get("/img/<slug>")
 def get_episode_image(slug):
   audioInfo = audio.get_one_audio(slug + ".mp3")
 
@@ -28,11 +30,11 @@ def get_episode_image(slug):
   response.set_header("content-type", audioInfo["data"]["img"]["mime"])
   return audioInfo["data"]["img"]["data"]  
 
-@get("/public/<file:path>")
+@app.get("/public/<file:path>")
 def send_public(file):
   return static_file(file, "./public")
 
-@get("/ep/<slug>")
+@app.get("/ep/<slug>")
 def send_episode(slug):
   audioInfo = audio.get_one_audio(slug + ".mp3")
 
@@ -47,7 +49,7 @@ def send_episode(slug):
     "episode": audioInfo
   })
 
-@get("/")
+@app.get("/")
 def send_index():
   base_html = open("./template/index.html", "r", encoding="utf8").read()
 
@@ -58,3 +60,16 @@ def send_index():
     "config": config,
     "episodes": audioFiles
   })
+
+class StripPathMiddleware(object):
+    '''
+    Get that slash out of the request
+    '''
+    def __init__(self, a):
+        self.a = a
+    def __call__(self, e, h):
+        e['PATH_INFO'] = e['PATH_INFO'].rstrip('/')
+        return self.a(e, h)
+
+if __name__ == "__main__":
+  run(app=StripPathMiddleware(app), host='localhost', port=8080, debug=True, reloader=True)

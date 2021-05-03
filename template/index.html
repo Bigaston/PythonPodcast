@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{config.podcast["title"]}}</title>
+    <link rel="stylesheet" href="./public/index.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="headerBox">
+      <div class="header" style="background-image: url(/public/pod.jpg)"></div>
+    </div>
+    <div class="hoverHeader" overflow="hidden"></div>
+    <div class="hoverHeader2" overflow="hidden"></div>
+    <div class="topPage">
+      <div class="topLeft">
+        <img src="/public/pod.jpg" alt="Logo de {{config.podcast["title"]}}" />
+      </div>
+      <div class="topRight">
+        <h1>{{config.podcast["title"]}}</h1>
+        <p class="slogan">{{config.podcast["itunes_subtitle"]}}</p>
+        <p class="description">{{config.podcast["description"]}}</p>
+      </div>
+    </div>
+  </body>
+</html>

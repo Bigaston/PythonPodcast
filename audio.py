@@ -4,7 +4,7 @@ import datetime
 import math
 
 def get_all_audio():
-  audio_files = list(filter(filter_mp3, os.listdir("./static/audio")))
+  audio_files = list(filter(filter_mp3, os.listdir("./public/audio")))
 
   fileDict = {}
 
@@ -14,10 +14,10 @@ def get_all_audio():
   return fileDict
 
 def get_one_audio(slug):
-  audio_files = list(filter(filter_mp3, os.listdir("./static/audio")))
+  audio_files = list(filter(filter_mp3, os.listdir("./public/audio")))
 
   if slug in audio_files:
-    audio = mutagen.File("./static/audio/" + slug)
+    audio = mutagen.File("./public/audio/" + slug)
 
     dataDict = {
       "title": audio.tags.get("TIT2"),
@@ -39,8 +39,8 @@ def get_one_audio(slug):
 
     return {
       "data": dataDict,
-      "modifDate": datetime.datetime.fromtimestamp(os.stat("./static/audio/" + slug).st_mtime).strftime("%a, %d %b %Y %H:%M:%S +0200"),
-      "fileSize": os.stat("./static/audio/" + slug).st_size
+      "modifDate": datetime.datetime.fromtimestamp(os.stat("./public/audio/" + slug).st_mtime).strftime("%a, %d %b %Y %H:%M:%S +0200"),
+      "fileSize": os.stat("./public/audio/" + slug).st_size
     }
   else:
     return None

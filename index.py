@@ -1,4 +1,4 @@
-from bottle import get, run, template, response, static_file, abort
+from bottle import get, run, template, response, public_file, abort
 import datetime
 import mimetypes
 
@@ -7,7 +7,7 @@ audio = __import__("audio")
 
 @get('/rss')
 def send_rss():
-  base_rss = open("./basic_rss.xml", "r", encoding="utf8").read()
+  base_rss = open("./template/basic_rss.xml", "r", encoding="utf8").read()
 
   audioFiles = audio.get_all_audio()
 
@@ -28,8 +28,20 @@ def get_episode_image(slug):
   response.set_header("content-type", audioInfo["data"]["img"]["mime"])
   return audioInfo["data"]["img"]["data"]  
 
-@get("/static/<file:path>")
-def send_static(file):
-  return static_file(file, "./static")
+@get("/public/<file:path>")
+def send_public(file):
+  return public_file(file, "./public")
+
+@get("/")
+def send_index():
+  base_html = open("./template/index.html", "r", encoding="utf8").read()
+
+  audioFiles = audio.get_all_audio()
+
+  response.set_header("content-type", "text/html")
+  return template(base_html, {
+    "config": config,
+    "episodes": audioFiles
+  })
 
 run(host='localhost', port=8080, debug=True, reloader=True)

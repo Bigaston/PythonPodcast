@@ -9,7 +9,7 @@
     </description>
     <link>{{config.podcast["url"]}}</link>
     <image>
-      <url>{{config.podcast["url"]}}/static/pod.jpg</url>
+      <url>{{config.podcast["url"]}}/public/pod.jpg</url>
       <title>{{config.podcast["title"]}}</title>
       <link>{{config.podcast["url"]}}</link>
     </image>
@@ -32,7 +32,7 @@
     <itunes:summary>{{config.podcast["description"]}}</itunes:summary>
     <itunes:subtitle>{{config.podcast["itunes_subtitle"]}}</itunes:subtitle>
     <itunes:type>{{config.podcast["itunes_type"]}}</itunes:type>
-    <itunes:image href="{{config.podcast["url"]}}/static/pod.jpg"> </itunes:image>
+    <itunes:image href="{{config.podcast["url"]}}/public/pod.jpg"> </itunes:image>
     <itunes:explicit>{{config.podcast["itunes_explicit"]}}</itunes:explicit>
     <link rel="payment" href="{{config.podcast["donation"]}}"> </link>
   
@@ -51,7 +51,7 @@
       <itunes:image href="{{config.podcast["url"]}}/img/{ep}" />
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
-      <enclosure url="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/static/audio/{{ep}}.mp3" type="audio/mpeg" length="{{episodes[ep]["fileSize"]}}"/>
+      <enclosure url="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{ep}}.mp3" type="audio/mpeg" length="{{episodes[ep]["fileSize"]}}"/>
     </item>
     %end
   </channel>

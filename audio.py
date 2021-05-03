@@ -27,7 +27,8 @@ def get_one_audio(slug):
 
     dataDict = {
       "title": audio.tags.get("TIT2"),
-      "duration": sToHms(audio.info.length)
+      "duration": sToHms(audio.info.length),
+      "pub_date": datetime.datetime.fromtimestamp(os.stat("./public/audio/" + slug).st_ctime),
     }
 
     if (len(audio.tags.getall("COMM")) != 0):
@@ -48,11 +49,13 @@ def get_one_audio(slug):
       otherData = json.load(rawData)
 
       for key in otherData:
-        dataDict[key] = otherData[key]
+        if key == "pub_date":
+          dataDict[key] = datetime.datetime.fromtimestamp(otherData[key])
+        else:
+          dataDict[key] = otherData[key]
 
     return {
       "data": dataDict,
-      "modifDate": datetime.datetime.fromtimestamp(os.stat("./public/audio/" + slug).st_mtime),
       "fileSize": os.stat("./public/audio/" + slug).st_size,
       "slug": slug.replace(".mp3", "")
     }
@@ -101,9 +104,9 @@ def filterByDate(elem1, elem2):
   else:
     modificator = 0
 
-  if elem1["modifDate"] > elem2["modifDate"]:
+  if elem1["data"]["pub_date"] > elem2["data"]["pub_date"]:
     return 1 * modificator
-  elif elem1["modifDate"] < elem2["modifDate"]:
+  elif elem1["data"]["pub_date"] < elem2["data"]["pub_date"]:
     return -1 * modificator
   else:
     return 0

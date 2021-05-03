@@ -32,7 +32,7 @@
       <h2 class="contentHeader">{{episode["data"]["title"]}}</h2>
       <audio class="audio" preload="none" src="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{episode["slug"]}}.mp3" controls></audio>
       <div class="descriptionEp">{{!marko.convert(config.podcast["base_description"].replace("%%comment%%", str(episode["data"]["description"])))}}</div>
-      <p class="moreInfoEp">Publié le {{episode["modifDate"].strftime("%d/%m/%Y")}}</p>
+      <p class="moreInfoEp">Publié le {{episode["data"]["pub_date"].strftime("%d/%m/%Y")}}</p>
     </div>
 
     <footer>

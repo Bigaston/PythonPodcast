@@ -45,7 +45,7 @@
       <dc:creator>
         <![CDATA[ {{config.podcast["author"]}} ]]>
       </dc:creator>
-      <pubDate>{{ep["modifDate"].strftime("%a, %d %b %Y %H:%M:%S +0200")}}</pubDate>
+      <pubDate>{{ep["data"]["pub_date"].strftime("%a, %d %b %Y %H:%M:%S +0200")}}</pubDate>
       <itunes:author>{{config.podcast["author"]}}</itunes:author>
       <itunes:summary>{{config.podcast["base_description"].replace("%%comment%%", str(ep["data"]["description"]))}}</itunes:summary>
       <itunes:image href="{{config.podcast["url"]}}/img/{{ep["slug"]}}" />

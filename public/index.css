@@ -291,3 +291,13 @@ body {
 	position: relative;
 	bottom: 0;
 }
+
+.about {
+	text-align: center;
+	color: #AAB7B8;
+	margin-bottom: 150px;
+}
+
+.about a {
+	color: #AAB7B8;
+}

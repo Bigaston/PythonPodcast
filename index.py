@@ -73,7 +73,7 @@ class StripPathMiddleware(object):
         return self.a(e, h)
 
 if __name__ == "__main__":
-  if (sys.argv[1] == "--deploy"):
-    run(app=StripPathMiddleware(app), server='paste', port=7890)
-  else:
+  if (sys.argv[1] == "--dev"):
     run(app=StripPathMiddleware(app), host='localhost', port=8080, debug=True, reloader=True)
+  else:
+    run(app=StripPathMiddleware(app), server='paste', port=7890)

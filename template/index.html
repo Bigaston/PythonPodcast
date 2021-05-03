@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
+    <!-- Header -->
     <div class="headerBox">
       <div class="header" style="background-image: url(/public/pod.jpg)"></div>
     </div>
@@ -22,5 +23,17 @@
         <p class="description">{{config.podcast["description"]}}</p>
       </div>
     </div>
+
+    <!-- Boutons de navigations -->
+    <div class="buttonDiv">
+      <a href="/rss" class="icon" style="background-color: orange;">
+        <img src="/public/logo/rss.svg" alt="RSS"></img>
+      </a>
+    </div>
+
+    <!-- Liste des épisodes-->
+    %for ep in episodes:
+
+    %end
   </body>
 </html>

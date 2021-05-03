@@ -1,4 +1,4 @@
-from bottle import get, run, template, response, public_file, abort
+from bottle import get, run, template, response, static_file, abort
 import datetime
 import mimetypes
 
@@ -30,7 +30,7 @@ def get_episode_image(slug):
 
 @get("/public/<file:path>")
 def send_public(file):
-  return public_file(file, "./public")
+  return static_file(file, "./public")
 
 @get("/")
 def send_index():

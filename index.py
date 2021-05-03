@@ -1,4 +1,4 @@
-from bottle import get, run, template, response, static_file, abort
+from bottle import get, template, response, static_file, abort
 import datetime
 import mimetypes
 
@@ -58,5 +58,3 @@ def send_index():
     "config": config,
     "episodes": audioFiles
   })
-
-run(host='localhost', port=8080, debug=True, reloader=True)

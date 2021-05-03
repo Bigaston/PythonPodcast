@@ -1,0 +1,163 @@
+.topPageEpisode > img {
+	margin-top: 10px;
+	width: 250px;
+	height: 250px;
+	border-radius: 10px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content {
+	background-color: #F4F6F7;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 5px;
+	filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+}
+
+@media screen and (max-width: 490px) {
+	.content {
+		width: auto;
+	}
+}
+
+.contentHeader {
+	margin-top: 0;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.backToMenu {
+	text-align: center;
+}
+
+.backToMenu > a {
+	color: #34495E;
+}
+
+.descriptionEp a {
+	color: black;
+}
+
+.descriptionEp p {
+	text-align: justify;
+}
+
+.moreInfoEp {
+	color: #616A6B;
+}
+
+.backToMenuImg {
+	position: absolute;
+	left: 5;
+	top: 5;
+	width: 50px;
+	height: 50px;
+}
+
+.backToMenuImg:hover {
+	cursor: pointer;
+}
+
+.modal h1 {
+	text-align: center;
+	margin: 0;
+}
+
+.modal h2 {
+	text-align: center;
+}
+
+.iconShare {
+	display: flex;
+	justify-content: center;
+}
+
+.modal .button-primary {
+	display: block;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.openEmbed {
+	text-decoration: underline;
+}
+
+.openEmbed:hover {
+	cursor: pointer;
+}
+
+.sub {
+	display: flex;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding: 5px;
+	padding-left: 10px;
+}
+
+.sub p {
+	margin: 0px;
+}
+
+.sub .timeSub {
+	width: 65px;
+	font-weight: bold;
+	margin-right: 5px;
+}
+
+.subcurrent {
+	background-color: #E5E8E8;
+	border-left: solid 5px #3498DB;
+	padding-left: 5px;
+}
+
+.want_timecode {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.want_timecode span {
+	margin-left: 5px;
+}
+
+.epGamesContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+
+@media screen and (max-width: 490px) {
+	.epGamesContainer {
+		width: 100%;
+	}
+}
+
+.epGames {
+	margin: 10px
+}
+
+.epGamesContainer img {
+	filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+	height: 150px;
+	transition: transform 0.5s;
+}
+
+.epGamesContainer img:hover {
+	transform: scale(1.2);
+	cursor: pointer;
+}
+
+.audio {
+	width: 100%;
+}

@@ -1,0 +1,38 @@
+%import marko
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{episode["data"]["title"]}} - {{config.podcast["title"]}}</title>
+    <link rel="stylesheet" href="/public/index.css" />
+    <link rel="stylesheet" href="/public/episode.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <meta property="og:title" content="{{episode["data"]["title"]}} - {{config.podcast["title"]}}"></meta>
+    <meta property="og:description" content="{{episode["data"]["description"]}}"></meta>
+    <meta name="description" content="{{episode["data"]["description"]}}"></meta>
+    <meta property="og:image" content="{{config.podcast["url"]}}/img/{{episode["slug"]}}"></meta>
+  </head>
+  <body>
+    <!-- Header -->
+    <a href="/">
+      <img class="backToMenuImg" src="/public/arrow-left.svg" alt="Retourner à l'index" />
+    </a>
+    <div class="headerBox">
+      <div class="header" style="background-image: url(/img/{{episode["slug"]}})"></div>
+    </div>
+    <div class="hoverHeader" overflow="hidden"></div>
+    <div class="hoverHeader2" overflow="hidden"></div>
+    <div class="topPageEpisode">
+      <img src="/img/{{episode["slug"]}}" alt="Logo de {{episode["data"]["title"]}}" />
+    </div>
+
+    <!-- Contenu -->
+    <div class="content">
+      <h2 class="contentHeader">{{episode["data"]["title"]}}</h2>
+      <audio class="audio" preload="none" src="{{config.podcast["audio_base"]}}{{config.podcast["url"]}}/public/audio/{{episode["slug"]}}.mp3" controls></audio>
+      <div class="descriptionEp">{{!marko.convert(config.podcast["base_description"].replace("%%comment%%", str(episode["data"]["description"])))}}</div>
+      <p class="moreInfoEp">Publié le {{episode["modifDate"].strftime("%d/%m/%Y")}}</p>
+    </div>
+  </body>
+</html>

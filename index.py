@@ -32,6 +32,21 @@ def get_episode_image(slug):
 def send_public(file):
   return static_file(file, "./public")
 
+@get("/ep/<slug>")
+def send_episode(slug):
+  audioInfo = audio.get_one_audio(slug + ".mp3")
+
+  if audioInfo == None:
+    abort(404, "No episode called " + slug)
+
+  base_html = open("./template/episode.html", "r", encoding="utf8").read()
+
+  response.set_header("content-type", "text/html")
+  return template(base_html, {
+    "config": config,
+    "episode": audioInfo
+  })
+
 @get("/")
 def send_index():
   base_html = open("./template/index.html", "r", encoding="utf8").read()

@@ -5,6 +5,16 @@
     <link rel="stylesheet" href="./public/index.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <meta property="og:title" content="{{config.podcast["title"]}}"></meta>
+    <meta property="og:site_name" content="{{config.podcast["title"]}}"></meta>
+    <meta property="og:description" content="{{config.podcast["description"]}}"></meta>
+    <meta name="description" content="{{config.podcast["description"]}}"></meta>
+    <meta property="og:type" content="blog"></meta>
+    <meta property="og:image" content="{{config.podcast["url"]}}/public/pod.jpg">
+    <meta property="og:url" content="{{config.podcast["url"]}}/public/pod.jpg"></meta>
+    <meta property="theme-color" content="#edbb9a"></meta>
+    <link href="{{config.podcast["url"]}}/rss" rel="alternate" type="application/rss+xml" title="{{config.podcast["title"]}}"></link>
   </head>
   <body>
     <!-- Header -->

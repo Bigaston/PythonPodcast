@@ -17,8 +17,8 @@ Dans la vie il y a des questions que personnes ne se pose...
 
 %%comment%%
 
-📍 Enregistré à... chez moi du coup!
-📅 Le 17 décembre 2019
+📍 Enregistré à... chez moi du coup!  
+📅 Le 17 décembre 2019  
 📻 Voix de l'introduction par Fredoune
   """
 }

@@ -1,7 +1,4 @@
-import bottle
-import os
-os.chdir(os.path.dirname(__file__))
-
+from bottle import run
 import index
 
-application = bottle.default_app()
+run(host='localhost', port=8080, server="cherrypy")
